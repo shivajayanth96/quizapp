@@ -42,4 +42,13 @@ public class QuestionService {
         }
     }
 
+    public ResponseEntity<String> deleteQuestionById(Integer id) {
+        if (questionRepository.existsById(id)) {
+            questionRepository.deleteById(id);
+            return new ResponseEntity<>("Question deleted successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Question not found", HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
